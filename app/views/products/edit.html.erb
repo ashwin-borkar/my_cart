@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-9 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+			<h1 class = "btn btn-mini btn-warning">Editing Product</h1>
+
+			<%= render 'form', product: @product %>
+
+			<%= link_to 'Show', @product ,class:'btn btn-mini btn-info'%> |
+			<%= link_to 'Back', products_path ,class:'btn btn-mini btn-info' %>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>

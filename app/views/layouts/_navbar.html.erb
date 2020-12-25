@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand navbar-dark bg-primary ">
+  <div class="collapse navbar-collapse" id="navbarsExample02">
+    <ul class="navbar-nav mr-auto">
+             
+      <div class="collapse navbar-collapse" id="navbarNav">
+    
+       <ul class="navbar-nav mr-auto">
+          <% if user_signed_in? %><a class="nav-link" href="#"><strong><%= current_user.email %></strong></a>
+            <li><%= link_to "Logout", destroy_user_session_path,style:"color:#00fff5; background-color:#e90731;", method: :delete, :class => 'nav-link'%></li>
+          <% else %>
+            <li class="nav-item"> <%#= link_to "Sign up", new_user_registration_path, :class => 'nav-link'  %> 
+              <%= link_to "Login", new_user_session_path, :class => 'nav-link' %> </li>
+          <% end %>
+        </ul>
+    </ul>
+  </div>
+</nav>
+</div>
+
+
+
+
+
+            
+            

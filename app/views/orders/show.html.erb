@@ -1,0 +1,54 @@
+<!-- <p id="notice"><%#= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @order.user_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @order.status %>
+</p>
+
+<p>
+  Item Count: <%= @order.order_items.count %>
+</p>
+
+<%#= link_to 'Edit', edit_order_path(@order) %> |
+<%#= link_to 'Back', orders_path %> -->
+<h1 style = "color:blue;">Your Order</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <td><%= current_user.email %></td>
+  </tr>
+  <tr>
+    <th>Status:</th>
+    <td><%= @order.status %></td>
+  </tr>
+  <tr>
+    <th>Items:</th>
+    <td><%= @order.order_items.count %></td>
+  </tr>
+  <tr>
+    <th>Price:</th>
+    <td><%= @product.price %></td>
+  </tr>
+   <tr>
+    <th>Total:</th>
+    <td>
+      <% item = @order.order_items.count %>
+      <% price = @product.price%>
+      <%= item * price.to_i %>
+    </td>
+  </tr>
+  
+
+<%= link_to "Empty Cart", order_item_path, data: { confirm: 'Are you sure?' }, method: :delete , class:'btn btn-mini btn-warning'%>
+
+  <!-- more codedhdh will go here -->
+</table>
+
+<%= link_to 'Create PDF document', order_path(@order, :format => :pdf), class:'btn btn-mini btn-info', target:"_blank" %>
+<%= link_to "Back", authenticated_root_path,  class:'btn btn-mini btn-info' %>

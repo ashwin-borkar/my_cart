@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Your Shoping Cart</h1>
+<div class="media">
+  <div class="media-body">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cart_products_with_qty.each do |array| %>
+    product = array [0]
+    qty = array[1]
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td><%= qty %></td>
+        <td><%= product.price * qty.to_i %></td>
+        <td><%= link_to '+', cart_add_to_path(product),  method: :put, class:'btn btn-mini btn-primary'%></td>
+        <td><%= link_to '-', cart_remove_from_path(product),  method: :put, class:'btn btn-mini btn-success' %></td>
+        <td><%= link_to 'Remove', cart_remove_from_path(product), method: :put, class:'btn btn-mini btn-danger',data: { confirm: 'Are you sure?' } %></td>
+       
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</div>
+
+<br>
+<% if current_user.admin_role? %>
+<%= link_to 'New Product', new_product_path, class:'btn btn-orange'%>
+<% end %>
